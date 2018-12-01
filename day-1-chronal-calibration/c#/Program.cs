@@ -18,7 +18,8 @@ namespace ChronalCalibration
             Console.WriteLine(frequencies.Sum());
 
             var currentFrequency = 0;
-            List<int> seenFrequencies = new List<int>();
+            HashSet<int> seenFrequencies = new HashSet<int>();
+            seenFrequencies.Add(currentFrequency);
             int count = 0;
             while (true)
             {
