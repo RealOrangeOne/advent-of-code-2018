@@ -5,11 +5,14 @@ print(sum(frequencies))
 
 current_frequency = 0
 seen_frequencies = [current_frequency]
-for i in range(9999):
+count = 0
+
+while True:
     for frequency in frequencies:
         current_frequency += frequency
         if current_frequency in seen_frequencies:
             print(current_frequency)
             exit()
         seen_frequencies.append(current_frequency)
-    print('pass {} {}'.format(i, current_frequency))
+    count += 1
+    print('pass {} {}'.format(count, current_frequency))
