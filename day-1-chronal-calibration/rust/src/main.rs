@@ -2,6 +2,7 @@ use std::fs::File;
 use std::io::BufRead;
 use std::io::BufReader;
 use std::process::exit;
+use std::collections::HashSet;
 
 fn main() {
     let file = File::open("../data.txt").unwrap();
@@ -14,7 +15,8 @@ fn main() {
     println!("{:?}", frequencies.iter().sum::<i32>());
 
     let mut current_frequency = 0;
-    let mut seen_frequencies: Vec<i32> = vec![current_frequency];
+    let mut seen_frequencies: HashSet<i32> = HashSet::new();
+    seen_frequencies.insert(current_frequency);
     let mut count = 0;
     loop {
         for frequency in frequencies.iter() {
@@ -23,7 +25,7 @@ fn main() {
                 println!("{}", current_frequency);
                 exit(0);
             }
-            seen_frequencies.push(current_frequency);
+            seen_frequencies.insert(current_frequency);
         }
         count += 1;
         println!("pass {} {}", count, current_frequency);
