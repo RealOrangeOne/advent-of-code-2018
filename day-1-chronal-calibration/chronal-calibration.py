@@ -4,7 +4,7 @@ with open('data.txt', 'r') as f:
 print(sum(frequencies))
 
 current_frequency = 0
-seen_frequencies = [current_frequency]
+seen_frequencies = {current_frequency}
 count = 0
 
 while True:
@@ -13,6 +13,6 @@ while True:
         if current_frequency in seen_frequencies:
             print(current_frequency)
             exit()
-        seen_frequencies.append(current_frequency)
+        seen_frequencies.add(current_frequency)
     count += 1
     print('pass {} {}'.format(count, current_frequency))
