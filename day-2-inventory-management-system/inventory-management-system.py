@@ -15,6 +15,8 @@ for id in ids:
 
 print(accumulator[2] * accumulator[3])
 
+seen = set()
+
 for id in ids:
     for checking_id in ids:
         different = 0
@@ -23,5 +25,7 @@ for id in ids:
                 different += 1
         if different != 1:
             continue
-        common_letters = [c for c in checking_id if c in id]
-        print("".join(common_letters))
+        common_letters = "".join([c for c in checking_id if c in id])
+        if common_letters in seen:
+            print(common_letters)
+        seen.add(common_letters)
