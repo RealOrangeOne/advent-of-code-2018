@@ -1,4 +1,5 @@
 from collections import Counter
+import operator
 
 with open('data.txt', 'r') as f:
     ids = [id.strip() for id in f.readlines()]
@@ -14,11 +15,8 @@ seen = set()
 
 for id in ids:
     for checking_id in ids:
-        different = 0
-        for char1, char2 in zip(id, checking_id):
-            if char1 != char2:
-                different += 1
-        if different != 1:
+        different = [pairs for pairs in zip(id, checking_id) if operator.ne(*pairs)]
+        if len(different) != 1:
             continue
         common_letters = "".join([c for c in checking_id if c in id])
         if common_letters in seen:
