@@ -14,3 +14,14 @@ for id in ids:
         accumulator[letter_count] += 1
 
 print(accumulator[2] * accumulator[3])
+
+for id in ids:
+    for checking_id in ids:
+        different = 0
+        for char1, char2 in zip(id, checking_id):
+            if char1 != char2:
+                different += 1
+        if different != 1:
+            continue
+        common_letters = [c for c in checking_id if c in id]
+        print("".join(common_letters))
