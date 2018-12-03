@@ -29,4 +29,13 @@ claim_patch_counter = Counter(claim_patches)
 
 claim_patch_counter_values = list(claim_patch_counter.values()).count(1)
 
-print(len(claim_patch_counter) - claim_patch_counter_values)
+conflicting_patches = {patch for patch, count in claim_patch_counter.items() if count > 1}
+
+print(len(conflicting_patches))
+
+for claim in claims:
+    for claim_patch in claim.internal_coordinates():
+        if claim_patch in conflicting_patches:
+            break
+    else:
+        print(claim.id)
